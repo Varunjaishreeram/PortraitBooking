@@ -67,7 +67,7 @@ def book_order():
         # Prepare email message
         msg = MIMEMultipart()
         msg['From'] = app.config['MAIL_USERNAME']  # Your email (sender)
-        msg['To'] = 'babitasharmaadvocate444@gmail.com'  # Recipient's email
+        msg['To'] = 'panditayush498@gmail.com'  # Recipient's email
         msg['Subject'] = f'New Portrait Booking Request from {name}'
         
         body = f"""
@@ -102,7 +102,7 @@ def book_order():
             with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
                 server.starttls()
                 server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-                server.sendmail(app.config['MAIL_USERNAME'], 'babitasharmaadvocate444@gmail.com', msg.as_string())  # Send to this email
+                server.sendmail(app.config['MAIL_USERNAME'], 'panditayush498@gmail.com', msg.as_string()) # Send to this email
             flash('Your portrait booking request has been sent successfully!', 'success')
             return redirect(url_for('home'))
         except Exception as e:
