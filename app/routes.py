@@ -51,62 +51,50 @@ def book_order():
         portrait_type = request.form['portrait_type']
         photo = request.files['photo']
         payment_screenshot = request.files.get('payment_screenshot')  # Optional
-        payment=["NO"]
-
-        
-        # Save the uploaded files
-        photo_filename = os.path.join('app/temp', photo.filename)
-        photo.save(photo_filename)
-        
-        payment_screenshot_filename = None
-        if payment_screenshot:
-            payment_screenshot_filename = os.path.join('app/temp', payment_screenshot.filename)
-            payment[0]="Yes"
-            payment_screenshot.save(payment_screenshot_filename)
 
         # Prepare email message
         msg = MIMEMultipart()
         msg['From'] = app.config['MAIL_USERNAME']  # Your email (sender)
         msg['To'] = 'panditayush498@gmail.com'  # Recipient's email
         msg['Subject'] = f'New Portrait Booking Request from {name}'
-        
+
         body = f"""
         Name: {name}
         Phone: {phone}
         Email: {email}
         Description: {description}
-        portrait_type: {portrait_type}
-        Payment Made: {payment[0]}
+        Portrait Type: {portrait_type}
+        Payment Made: {'Yes' if payment_screenshot else 'No'}
         """
         msg.attach(MIMEText(body, 'plain'))
-        
+
         # Attach the photo
-        with open(photo_filename, 'rb') as f:
-            part = MIMEBase('application', 'octet-stream')
-            part.set_payload(f.read())
-            encoders.encode_base64(part)
-            part.add_header('Content-Disposition', f'attachment; filename={photo.filename}')
-            msg.attach(part)
-        
+        photo_data = photo.read()
+        photo_part = MIMEBase('application', 'octet-stream')
+        photo_part.set_payload(photo_data)
+        encoders.encode_base64(photo_part)
+        photo_part.add_header('Content-Disposition', f'attachment; filename="{photo.filename}"')
+        msg.attach(photo_part)
+
         # Attach the payment screenshot if available
-        if payment_screenshot_filename:
-            with open(payment_screenshot_filename, 'rb') as f:
-                part = MIMEBase('application', 'octet-stream')
-                part.set_payload(f.read())
-                encoders.encode_base64(part)
-                part.add_header('Content-Disposition', f'attachment; filename={payment_screenshot.filename}')
-                msg.attach(part)
+        if payment_screenshot:
+            screenshot_data = payment_screenshot.read()
+            screenshot_part = MIMEBase('application', 'octet-stream')
+            screenshot_part.set_payload(screenshot_data)
+            encoders.encode_base64(screenshot_part)
+            screenshot_part.add_header('Content-Disposition', f'attachment; filename="{payment_screenshot.filename}"')
+            msg.attach(screenshot_part)
 
         # Send the email
         try:
             with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
                 server.starttls()
                 server.login(app.config['MAIL_USERNAME'], app.config['MAIL_PASSWORD'])
-                server.sendmail(app.config['MAIL_USERNAME'], 'panditayush498@gmail.com', msg.as_string()) # Send to this email
+                server.sendmail(app.config['MAIL_USERNAME'], 'panditayush498@gmail.com', msg.as_string())
             flash('Your portrait booking request has been sent successfully!', 'success')
             return redirect(url_for('home'))
         except Exception as e:
-            flash(f'Error sending email!', 'danger')
+            flash(f'Error sending email: {str(e)}', 'danger')
             return redirect(url_for('book_order'))
-    
+
     return render_template('book_order.html')

@@ -9,6 +9,23 @@
     <title>Portrait Booking</title>
     <style>
         /* Apply a dark background to the body */
+        .card-img-container {
+            width: 100%;
+            height: 300px; /* Set a fixed height for the images */
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card-img-container img {
+            width: auto;
+            height: 100%; /* Ensure all images fit within the height */
+            object-fit: cover; /* Ensures the image fills the container without stretching */
+        }
+        
+
+
         body {
             background-color: #121212; /* Dark background */
             color: #ffffff; /* Light text for readability */
@@ -54,7 +71,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar" style="background-color:rgb(8, 165, 66);">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url_for('home') }}">Portrait Booking</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
