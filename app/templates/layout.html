@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Portrait Booking</title>
+    <style>
+        /* Apply a dark background to the body */
+        body {
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text for readability */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the footer stays at the bottom */
+        }
+
+        /* Add a lighter background for the main content container */
+        .container {
+            background-color: #1e1e1e; /* Slightly lighter dark shade */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6); /* Subtle shadow */
+            flex: 1; /* Allow container to expand */
+        }
+
+        /* Customize the navbar */
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8); /* Lightened text for links */
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #ffffff; /* Full white on hover */
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #181818; /* Dark footer */
+            color: rgba(255, 255, 255, 0.8); /* Lightened text */
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer a {
+            color: #0dcaf0; /* Bootstrap primary color for links */
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Portrait Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('pricing') }}">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('book_order') }}">Book Order</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('artist') }}">About Artist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('developer') }}">About Developer</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="container mt-3">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="container my-5">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© {{ 2024 }} All Rights Are Reserved. Powered by <a href="#">Get4U</a>.</p>
+        <p>Designed & Developed by <a href="{{ url_for('developer') }}">Varun Bhardwaj</a>.</p>
+    </footer>
+</body>
+</html>

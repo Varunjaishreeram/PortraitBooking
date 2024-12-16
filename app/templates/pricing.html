@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="text-center mb-4 text-success">Pricing</h1>
+<div class="container">
+    <div class="row text-center">
+        <!-- Basic Portrait -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Basic Portrait</h4>
+                    <p class="card-text small text-warning">Hand-drawn sketch on A4-size paper for ₹400. Perfect for simple yet elegant portraits to cherish forever.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <strong>₹400</strong>
+                </div>
+            </div>
+        </div>
+        <!-- Detailed Portrait -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Detailed Portrait</h4>
+                    <p class="card-text small text-warning">Highly detailed and premium portrait on A4-size paper for ₹600. Ideal for memorable gifts to your partner or personal keepsakes.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <strong>₹600</strong>
+                </div>
+            </div>
+        </div>
+        <!-- Premium Portrait -->
+        <div class="col-md-4 mb-4">
+            <div class="card bg-dark text-white h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Premium Portrait</h4>
+                    <p class="card-text text-info">
+                        Custom portraits made to your specifications: 
+                        <ul class="text-start small text-warning">
+                            <li>Large sheet size available</li>
+                            <li>Couple portraits</li>
+                            <li>Gift wrap facility with frame</li>
+                            <li>Perfect for gifting to your partner, family, or friends</li>
+                        </ul>
+                        Prices start at ₹1000
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <strong>₹1000</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row align-items-center">
+        <!-- Artist's Photo -->
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+            <img src="{{ url_for('static', filename='scanner.jpg') }}" alt="Artist's Photo" class="rounded-circle shadow" style="width: 200px; height: 200px; object-fit: cover;">
+        </div>
+
+        <!-- Artist's Details -->
+        <div class="col-md-8">
+            <h2 class="text-light">Meet the Artist</h2>
+            <p class="small text-warning">"Art is not what you see, but what you make others feel."</p>
+            <p>
+                <strong>Ayush</strong> is not just an artist but a storyteller who brings memories to life through the power of portrait art. With a deep understanding of human anatomy as a professional physiotherapist, Ayush combines science and creativity to craft portraits that resonate with emotion and realism.
+            </p>
+            <p>
+                Having worked with countless clients, from families to couples, Ayush specializes in creating unique, custom artwork that transforms simple photos into timeless treasures. Whether it's a cherished gift for a loved one, a family portrait, or a personal keepsake, each piece reflects a commitment to excellence.
+            </p>
+            <p class="small text-warning">Why Choose Ayush?</p>
+            <ul class="list-unstyled">
+                <li>🎨 Expertise in lifelike portrait sketches on various materials, including A4, large sheets, and framed designs.</li>
+                <li>🎁 Gift-ready options, including wrapping and custom framing.</li>
+                <li>💼 Dual professional background as an <span class="text-info">artist</span> and <span class="text-info">physiotherapist</span> , ensuring precision and attention to detail.</li>
+            </ul>
+            <p>
+                Outside the studio,  enjoys exploring creative ideas, connecting with clients, and turning everyday moments into artistic inspiration. With a warm approach and a passion for perfection, Ayush ensures each portrait tells a unique story.
+            </p>
+            <div class="text-center ">
+                <a href="mailto:artist.email@example.com" class="btn btn-outline-light btn-sm mt-2">
+                    <i class="bi bi-envelope me-2"><img src="{{ url_for('static', filename= "gmail.png") }}" alt="Developer Photo" class="img-fluid rounded-circle shadow" style="max-width: 30px;"></i><span class="text-info">ayush_pandit_arts@gmail.com</span>
+                </a>
+                <a href="https://www.instagram.com/ayush_pandit_arts" target="_blank" class="btn btn-outline-light btn-sm mt-2">
+                    <i class="bi bi-instagram me-2"><img src="{{ url_for('static', filename= "instagram.png") }}" alt="Developer Photo" class="img-fluid rounded-circle shadow" style="max-width: 30px;"></i>Instagram: <span class="text-info">ayush_pandit_arts</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

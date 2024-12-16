@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">About the Developer</h1>
+    <div class="row align-items-center">
+        <!-- Image of Developer -->
+        <div class="col-md-4 text-center mb-3">
+            <img src="{{ url_for('static', filename='varunbhardwaj.jpg') }}" alt="Developer Photo" class="img-fluid rounded-circle shadow" style="max-width: 200px;">
+        </div>
+
+        <!-- About Developer Details -->
+        <div class="col-md-8">
+            <div class="card bg-dark text-white p-4 shadow">
+                <h3 class="card-title">Hi, I'm Varun Bhardwaj</h3>
+                <p class="card-text small text-warning">
+                    A passionate <span class="text-info">Software Engineer</span> with a knack for building modern, responsive, and user-friendly websites. 
+                </p>
+                <p class="card-text small text-warning">
+                    I specialize in crafting experiences that blend functionality and aesthetics to bring ideas to life on the web.
+                </p>
+                <p class="card-text small text-warning">
+                    Whether you're looking for a stunning portfolio, an interactive application, or a sleek e-commerce platform, I'm here to make it happen.
+                </p>
+                <hr class="bg-light">
+                <h5 class="mt-3 text-info">Connect with Me:</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="https://github.com/Varunjaishreeram" class="text-light text-decoration-none">
+                            <i class="bi bi-github me-2"><img src="{{ url_for('static', filename= "github.png") }}" alt="Developer Photo" class="img-fluid rounded-circle shadow" style="max-width: 30px;"></i><span class="text-danger">GitHub: </span><span class="text-info">Varunjaishreeram</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:varunbharadwaj444@gmail.com" class="d-flex align-items-center text-light text-decoration-none">
+                            <img src="{{ url_for('static', filename='gmail.png') }}" alt="Email Icon" class="img-fluid rounded-circle shadow me-2" style="max-width: 30px;">
+                            <span class="text-info">varunbharadwaj444@gmail.com</span>
+                        </a>
+                        
+                    </li>
+                    <li>
+                        <a href="https://instagram.com/varun_jaishreeram" class="text-light text-decoration-none">
+                            <i class="bi bi-instagram me-2"><img src="{{ url_for('static', filename= "instagram.png") }}" alt="Developer Photo" class="img-fluid rounded-circle shadow" style="max-width: 30px;"></i> <span class="text-danger">Instagram:</span> <span class="text-info">varun_jaishreeram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

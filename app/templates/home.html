@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="text-center mb-4">Completed Portraits</h1>
+<div class="row">
+    {% for portrait in portraits %}
+    <div class="col-md-4 mb-3">
+        <div class="card">
+            <img src="{{ url_for('static', filename='portraits/' + portrait) }}" class="card-img-top" alt="Portrait">
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
